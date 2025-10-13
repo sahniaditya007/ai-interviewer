@@ -1,6 +1,6 @@
-# AI Excel Interviewer
+# AI Interviewer
 
-An interactive web app that generates unique Microsoft Excel interview questions, evaluates user answers with AI, and provides detailed feedback—all in real time.
+An interactive web app that generates unique interview questions, evaluates user answers with AI, and provides detailed feedback—all in real time.
 
 ## Features
 
