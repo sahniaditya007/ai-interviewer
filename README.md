@@ -4,7 +4,7 @@ An interactive web app that generates unique interview questions, evaluates user
 
 ## Features
 
-- **Dynamic Question Generation:** AI creates new, non-generic Excel interview questions at three difficulty levels (Easy, Medium, Hard).
+- **Dynamic Question Generation:** AI creates new, non-generic technical interview questions for your chosen stack at three difficulty levels (Easy, Medium, Hard).
 - **Automated Evaluation:** User answers are scored for correctness, efficiency, and clarity using a rubric-based AI evaluator.
 - **Quality Assurance:** Each question is validated for clarity, relevance, and uniqueness before being presented.
 - **Detailed Feedback:** Users receive constructive, mini-lesson feedback and an overall assessment for each answer.
@@ -22,8 +22,8 @@ An interactive web app that generates unique interview questions, evaluates user
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/sahniaditya007/ai-excel-interviewer.git
-   cd ai-excel-interviewer
+   git clone https://github.com/sahniaditya007/ai-interviewer.git
+   cd ai-interviewer
    ```
 2. **Create and activate a virtual environment:**
    ```sh
@@ -48,7 +48,7 @@ An interactive web app that generates unique interview questions, evaluates user
 ## Usage
 
 - Use the sidebar to select a difficulty and start a new interview.
-- Answer the generated Excel question in detail.
+- Answer the generated interview question in detail.
 - Submit your answer to receive instant AI-powered evaluation and feedback.
 - Repeat for more questions or different difficulty levels.
 

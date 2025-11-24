@@ -41,7 +41,7 @@ def get_new_interview_question(difficulty: str) -> Dict | None:
     return None
 
 st.set_page_config(layout="wide")
-st.title("Dynamic AI Excel Interviewer")
+st.title("Dynamic AI Technical Interviewer")
 st.markdown("This AI generates unique questions on the fly and evaluates your answers based on a detailed rubric.")
 
 with st.sidebar:

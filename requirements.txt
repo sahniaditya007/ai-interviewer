@@ -1,7 +1,9 @@
-streamlit
-langchain
-langchain-huggingface
-langchain-core
+fastapi
+uvicorn
+sqlalchemy
 pydantic
 python-dotenv
+langchain
 langchain-google-genai
+python-multipart
+aiosqlite
