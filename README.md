@@ -1,68 +1,167 @@
+
 # AI Interviewer
 
-An interactive web app that generates unique interview questions, evaluates user answers with AI, and provides detailed feedback—all in real time.
+AI Interviewer is a web application that conducts technical interviews using a conversational AI. It leverages Google's Gemini models to generate questions, evaluate answers, and provide feedback in real-time.
 
 ## Features
 
-- **Dynamic Question Generation:** AI creates new, non-generic technical interview questions for your chosen stack at three difficulty levels (Easy, Medium, Hard).
-- **Automated Evaluation:** User answers are scored for correctness, efficiency, and clarity using a rubric-based AI evaluator.
-- **Quality Assurance:** Each question is validated for clarity, relevance, and uniqueness before being presented.
-- **Detailed Feedback:** Users receive constructive, mini-lesson feedback and an overall assessment for each answer.
-- **Session Tracking:** Interview progress and logs are maintained in the session.
+- **Dynamic Question Generation**: The AI generates unique, real-world-based questions for various technical stacks.
+- **Real-time Evaluation**: Get instant feedback on your answers, with scores for correctness, efficiency, and clarity.
+- **Session History**: Track your progress and review past interviews to identify areas for improvement.
+- **Multiple Tech Stacks**: Practice for interviews in various domains, including Python, JavaScript, React, DevOps, SQL, and more.
+- **Voice-to-Text and Text-to-Speech**: Speak your answers and hear the AI's questions and feedback.
 
 ## Tech Stack
 
-- [Streamlit](https://streamlit.io/) for the web interface
-- [LangChain](https://python.langchain.com/) for prompt orchestration
-- [Google Gemini API](https://ai.google.dev/) (via `langchain-google-genai`) for LLM-powered question generation and evaluation
-- [Pydantic](https://docs.pydantic.dev/) for structured output parsing
-- [python-dotenv](https://pypi.org/project/python-dotenv/) for environment variable management
+### Backend
 
-## Setup Instructions
+- **Python**: The primary language for the backend.
+- **FastAPI**: A modern, fast web framework for building APIs.
+- **SQLAlchemy**: A SQL toolkit and Object-Relational Mapper (ORM).
+- **LangChain**: A framework for developing applications powered by language models.
+- **Google Gemini**: The language model used for question generation and evaluation.
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/sahniaditya007/ai-interviewer.git
-   cd ai-interviewer
-   ```
-2. **Create and activate a virtual environment:**
-   ```sh
-   python -m venv myenv
-   # On Windows PowerShell:
-   .\myenv\Scripts\Activate.ps1
-   ```
-3. **Install dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. **Set up environment variables:**
-   - Create a `.env` file in the project root with your Google Gemini API key:
-     ```env
-     GEMINI_API_KEY=your_google_gemini_api_key_here
-     ```
-5. **Run the app:**
-   ```sh
-   streamlit run app.py
-   ```
+### Frontend
 
-## Usage
+- **Next.js**: A React framework for building server-side rendered and static web applications.
+- **TypeScript**: A typed superset of JavaScript.
+- **Tailwind CSS**: A utility-first CSS framework.
+- **axios**: A promise-based HTTP client for the browser and Node.js.
 
-- Use the sidebar to select a difficulty and start a new interview.
-- Answer the generated interview question in detail.
-- Submit your answer to receive instant AI-powered evaluation and feedback.
-- Repeat for more questions or different difficulty levels.
+## Project Structure
 
-## File Structure
+```
+.
+├── app.py                  # Streamlit application for a simpler demo
+├── backend
+│   ├── database.py         # Database connection and session management
+│   ├── main.py             # FastAPI application entry point and API endpoints
+│   ├── models.py           # SQLAlchemy ORM models
+│   ├── schemas.py          # Pydantic schemas for API request and response validation
+│   └── services.py         # Business logic for interviews, questions, and answers
+├── core
+│   ├── chain.py            # LangChain chains for question generation and evaluation
+│   ├── parsers.py          # Output parsers for LangChain
+│   └── prompts.py          # Prompts for the language model
+├── frontend
+│   ├── src
+│   │   ├── api
+│   │   │   └── index.ts      # API client for the frontend
+│   │   ├── app
+│   │   │   ├── page.tsx      # Landing page
+│   │   │   ├── dashboard
+│   │   │   │   └── page.tsx  # Dashboard page to view past interviews
+│   │   │   └── interview
+│   │   │       └── [id]
+│   │   │           └── page.tsx  # Interview page
+│   │   └── components      # React components
+│   ├── package.json          # Frontend dependencies
+│   └── next.config.ts        # Next.js configuration
+├── Dockerfile.backend      # Dockerfile for the backend application
+├── requirements.txt        # Python dependencies
+└── README.md               # This file
+```
 
-- `app.py` — Main Streamlit app
-- `core/chain.py` — Chains for question generation, validation, and evaluation
-- `core/prompts.py` — Prompt templates for LLMs
-- `core/parsers.py` — Pydantic models for structured outputs
+## Getting Started
 
-## Requirements
+### Prerequisites
 
-See `requirements.txt` for all dependencies.
+- Python 3.11 or later
+- Node.js 18 or later
+- An API key for Google Gemini
 
-## License
+### Installation
 
-MIT License
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/sahniaditya007/ai-interviewer.git
+    cd ai-interviewer
+    ```
+
+2.  **Set up the backend:**
+
+    -   Create a virtual environment:
+
+        ```bash
+        python -m venv venv
+        source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+        ```
+
+    -   Install the dependencies:
+
+        ```bash
+        pip install -r requirements.txt
+        ```
+
+    -   Create a `.env` file in the root directory and add your Google API key:
+
+        ```
+        GOOGLE_API_KEY="your-google-api-key"
+        ```
+
+3.  **Set up the frontend:**
+
+    -   Navigate to the `frontend` directory:
+
+        ```bash
+        cd frontend
+        ```
+
+    -   Install the dependencies:
+
+        ```bash
+        npm install
+        ```
+
+### Running the Application
+
+1.  **Start the backend:**
+
+    -   Navigate to the root directory.
+    -   Run the following command:
+
+        ```bash
+        uvicorn backend.main:app --reload
+        ```
+
+    The backend will be running at `http://localhost:8000`.
+
+2.  **Start the frontend:**
+
+    -   Navigate to the `frontend` directory.
+    -   Run the following command:
+
+        ```bash
+        npm run dev
+        ```
+
+    The frontend will be running at `http://localhost:3000`.
+
+3.  **Open your browser** and navigate to `http://localhost:3000`.
+
+## API Endpoints
+
+The backend provides the following REST API endpoints:
+
+-   `POST /sessions`: Create a new interview session.
+-   `GET /sessions/{session_id}`: Get details of a specific interview session.
+-   `GET /sessions`: Get a list of all interview sessions.
+-   `POST /sessions/{session_id}/questions`: Generate a new question for a session.
+-   `POST /questions/{question_id}/answer`: Submit an answer to a question and get feedback.
+
+## Database Schema
+
+The application uses a SQLite database to store information about interview sessions, questions, and answers. The schema is defined in `backend/models.py` and consists of the following tables:
+
+-   `interview_sessions`: Stores information about each interview session, including the tech stack and difficulty level.
+-   `questions`: Stores the questions generated by the AI for each session.
+-   `answers`: Stores the user's answers and the AI's feedback.
+
+## Future Improvements
+
+-   **Support for more tech stacks**: Add support for more programming languages, frameworks, and technical domains.
+-   **Code execution**: Allow users to write and execute code in the browser.
+-   **Multi-user support**: Allow multiple users to have their own accounts and interview history.
+-   **Improved feedback**: Provide more detailed and actionable feedback on user answers.
+-   **More realistic interview scenarios**: Simulate different types of interviews, such as behavioral interviews and system design interviews with a whiteboard.
